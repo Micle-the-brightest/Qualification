@@ -8,8 +8,10 @@
         public int PostIndex { set; get; }
         public int RoomCount { set; get; }
         public int PersonCount { set; get; }
-        public int FreeBedCount { set; get; }
-
-        /* public virtual RoomListModel RoomListModel  { set; get; }*/
+        public int FreeBedCount { set; get; }    
+        
+        public List<Room> Rooms { set; get; }    // багато до 1
+        
+        
     }
 }

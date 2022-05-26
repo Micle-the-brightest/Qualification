@@ -8,7 +8,15 @@ namespace Dormitory.Entityes
             : base(options)
         {
         }
+        
         public DbSet<Dormitory> Dormitories { get; set; }
+        
+        public DbSet<Room> Rooms { get; set; }
+        public DbSet<RoomInfo> RoomsInfo { get; set; }
+        public DbSet<Type> Types { get; set; }
+
+        
+        
         
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
