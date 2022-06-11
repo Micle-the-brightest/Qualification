@@ -1,0 +1,19 @@
+version: '3.4'
+
+services:
+    postgres:
+        image: postgres:11.4
+        container_name: postgres_test
+        environment:
+          POSTGRES_USER: coinManager
+          POSTGRES_PASSWORD: postgresTest
+          POSTGRES_DB: coinManagerTest
+        restart: always
+        volumes:
+          - /coinManager/postgres/test/data:/var/lib/postgresql/data
+        ports:
+          - '5433:5432'
+
+    
+
+    

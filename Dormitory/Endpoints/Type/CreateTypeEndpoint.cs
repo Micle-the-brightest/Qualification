@@ -1,9 +1,10 @@
 using Dormitory.Entityes;
-using Dormitory.Services;
+using Dormitory.Services.Request.Type;
+using Dormitory.Services.Response.Type;
 using FastEndpoints;
 using Microsoft.AspNetCore.Authorization;
 
-namespace Dormitory.Endpoints.Dormitories;
+namespace Dormitory.Endpoints.Type;
 
 
 [HttpPost("/type")][AllowAnonymous]
@@ -20,11 +21,11 @@ public class CreateTypeEndpoint: Endpoint<CreateTypeRequest,CreateTypeResponse>
     {
         var entity = new Entityes.Type
         {
-            Id = req.Id,
             TypeRoom = req.TypeRoom,
             Price = req.Price
         };
         await _typeContext.AddAsync(entity, ct);
+        await _typeContext.SaveChangesAsync(ct); //додати у всі креейти
         await SendOkAsync(ct);
     }
 }

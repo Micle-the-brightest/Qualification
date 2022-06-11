@@ -1,5 +1,7 @@
 using Dormitory.Entityes;
 using Dormitory.Services;
+using Dormitory.Services.Request.Dormitory;
+using Dormitory.Services.Response.Dormitory;
 using FastEndpoints;
 using Microsoft.AspNetCore.Authorization;
 
@@ -19,7 +21,6 @@ public class CreateDormitoryEndpoint : Endpoint<CreateDormitoryRequest, CreateDo
     {
         var entity = new Entityes.Dormitory
         {
-            Id = req.Id,
             BuldingName = req.BuldingName,
             Address= req.Address,
             PostIndex= req.PostIndex,
@@ -28,6 +29,8 @@ public class CreateDormitoryEndpoint : Endpoint<CreateDormitoryRequest, CreateDo
             FreeBedCount= req.FreeBedCount
         };
        await _dormitoryContext.AddAsync(entity, ct);
+       await _dormitoryContext.SaveChangesAsync(ct); //додати у всі креейти
        await SendOkAsync(ct);
+       
     }
 }

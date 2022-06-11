@@ -1,12 +1,14 @@
 using Dormitory.Entityes;
 using Dormitory.Services;
+using Dormitory.Services.Request.RoomInfo;
+using Dormitory.Services.Response.RoomInfo;
 using FastEndpoints;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 
 namespace Dormitory.Endpoints.RoomInfo;
 
-[HttpDelete("/roomInfo/{{id}}")] [AllowAnonymous]
+[HttpDelete("/roomInfo/{id}")] [AllowAnonymous]
 public class DeleteRoomInfoEndpoint:Endpoint<DeleteRoomInfoRequest, DeleteRoomInfoResponse>
 {
     private readonly DormitoryContext _roomInfoContext;

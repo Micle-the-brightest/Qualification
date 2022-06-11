@@ -1,13 +1,15 @@
 using Dormitory.Entityes;
 using Dormitory.Mapper;
 using Dormitory.Services;
+using Dormitory.Services.Request.Room;
+using Dormitory.Services.Response.Room;
 using FastEndpoints;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 
 namespace Dormitory.Endpoints.Room;
 
-[HttpGet("/room/{{id}}")][AllowAnonymous]
+[HttpGet("/room/{id}")][AllowAnonymous]
 public class GetRoomByIdEndpoint: Endpoint<GetByIdRoomRequest, GetByIdRoomResponse>
 {
     private readonly DormitoryContext _roomContext;

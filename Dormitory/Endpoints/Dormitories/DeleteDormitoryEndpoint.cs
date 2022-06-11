@@ -1,12 +1,14 @@
 using Dormitory.Entityes;
 using Dormitory.Services;
+using Dormitory.Services.Request.Dormitory;
+using Dormitory.Services.Response.Dormitory;
 using FastEndpoints;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 
 namespace Dormitory.Endpoints.Dormitories;
 
-[HttpDelete("/dormitory/{{id}}")][AllowAnonymous]
+[HttpDelete("/dormitory/{id}")][AllowAnonymous]
 public class DeleteDormitoryEndpoint :Endpoint<DeleteDormitoryRequest, DeleteDormitoryResponse>
 {
     private readonly DormitoryContext _dormitoryContext;

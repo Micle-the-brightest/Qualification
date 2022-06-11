@@ -1,11 +1,13 @@
 using Dormitory.Entityes;
 using Dormitory.Services;
+using Dormitory.Services.Request.RoomInfo;
+using Dormitory.Services.Response.RoomInfo;
 using FastEndpoints;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 
 namespace Dormitory.Endpoints.RoomInfo;
-[HttpPut("/roomInfo/{{id}}")][AllowAnonymous]
+[HttpPut("/roomInfo/{id}")][AllowAnonymous]
 public class UpdateRoomInfoEndpoint:Endpoint<UpdateRoomInfoRequest, UpdateRoomInfoResponse>
 {
     private readonly DormitoryContext _roomInfoContext; 

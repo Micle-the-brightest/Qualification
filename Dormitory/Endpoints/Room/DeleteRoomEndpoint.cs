@@ -1,5 +1,7 @@
 using Dormitory.Entityes;
 using Dormitory.Services;
+using Dormitory.Services.Request.Room;
+using Dormitory.Services.Response.Room;
 using FastEndpoints;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
@@ -7,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 namespace Dormitory.Endpoints.Room;
 
 
-[HttpDelete("/room/{{id}}")] [AllowAnonymous]
+[HttpDelete("/room/{id}")] [AllowAnonymous]
 public class DeleteRoomEndpoint :Endpoint<DeleteRoomRequest, DeleteRoomResponse>
 {
     private readonly DormitoryContext _roomContext; 

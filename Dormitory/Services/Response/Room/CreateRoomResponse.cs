@@ -1,4 +1,4 @@
-namespace Dormitory.Services;
+namespace Dormitory.Services.Response.Room;
 
 public class CreateRoomResponse
 {

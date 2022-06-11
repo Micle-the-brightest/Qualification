@@ -1,5 +1,7 @@
 using Dormitory.Entityes;
 using Dormitory.Services;
+using Dormitory.Services.Request.RoomInfo;
+using Dormitory.Services.Response.RoomInfo;
 using FastEndpoints;
 using Microsoft.AspNetCore.Authorization;
 
@@ -17,9 +19,9 @@ public class CreateRoomInfoEndpoint:Endpoint<CreateRoomInfoRequest, CreateRoomIn
 
     public override async Task HandleAsync(CreateRoomInfoRequest req, CancellationToken ct)
     {
+        
         var entity = new Entityes.RoomInfo
         {
-            Id = req.Id,
             StudName = req.StudName,
             NumRoom = req.NumRoom,
             TypeRoom = req.TypeRoom,
@@ -29,8 +31,10 @@ public class CreateRoomInfoEndpoint:Endpoint<CreateRoomInfoRequest, CreateRoomIn
             DateOfSettlement = req.DateOfSettlement,
             DateOfDeparture = req.DateOfDeparture,
             EarlyDepartureDate = req.EarlyDepartureDate,
+            RoomId = req.RoomId,
         };
         await _roomInfoContext.AddAsync(entity, ct);
+        await _roomInfoContext.SaveChangesAsync(ct); 
         await SendOkAsync(ct);
     }
 }

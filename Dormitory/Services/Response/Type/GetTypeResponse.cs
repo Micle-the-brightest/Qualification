@@ -1,6 +1,6 @@
 using Dormitory.Mapper;
 
-namespace Dormitory.Services;
+namespace Dormitory.Services.Response.Type;
 
 public class GetTypeResponse
 {

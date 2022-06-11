@@ -1,8 +1,7 @@
-namespace Dormitory.Services;
+namespace Dormitory.Services.Request.Dormitory;
 
 public class CreateDormitoryRequest
 {
-    public int Id { set; get; }
     public string BuldingName { set; get; }
     public string Address { set; get; }
     public int PostIndex { set; get; }

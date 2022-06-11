@@ -2,6 +2,7 @@ namespace Dormitory.Mapper;
 
 public class DormitoryViewModel
 {
+    public int Id { set; get; }
     public string BuldingName { set; get; }
     public string Address { set; get; }
     public int PostIndex { set; get; }

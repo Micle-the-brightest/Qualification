@@ -1,5 +1,7 @@
 using Dormitory.Entityes;
 using Dormitory.Services;
+using Dormitory.Services.Request.Room;
+using Dormitory.Services.Response.Dormitory;
 using FastEndpoints;
 using Microsoft.AspNetCore.Authorization;
 
@@ -19,16 +21,18 @@ public class CreateRoomEndpoint :Endpoint<CreateRoomRequest, CreateDormitoryResp
     {
         var entity = new Entityes.Room
         {
-            Id = req.Id,
             NumRoom = req.NumRoom,
             RoomCount = req.RoomCount,
             PersonCount = req.PersonCount,
             FreeBedCount = req.FreeBedCount,
             RoomArea = req.RoomArea,
-            RoomSex = req.RoomSex
+            RoomSex = req.RoomSex,
+            DormitoryId =req.DormitoryId,
+            TypeId = req.TypeId
             
         };
         await _roomContext.AddAsync(entity, ct);
+        await _roomContext.SaveChangesAsync(ct); //додати у всі креейти
             await SendOkAsync(ct);
     }
 }

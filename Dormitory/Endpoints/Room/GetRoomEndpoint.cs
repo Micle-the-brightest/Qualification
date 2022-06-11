@@ -1,6 +1,8 @@
 using Dormitory.Entityes;
 using Dormitory.Mapper;
 using Dormitory.Services;
+using Dormitory.Services.Request.Room;
+using Dormitory.Services.Response.Room;
 using FastEndpoints;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
@@ -24,12 +26,15 @@ public class GetRoomEndpoint: Endpoint<GetRoomRequest, GetRoomResponse>
         {
             Rooms = entities.Select(f => new RoomViewModel
             {
+                Id =f.Id,
                 NumRoom = f.NumRoom,
                 RoomCount= f.RoomCount,
                 PersonCount= f.PersonCount,
                 FreeBedCount= f.FreeBedCount,
                 RoomArea =f.RoomArea,
-                RoomSex = f.RoomSex
+                RoomSex = f.RoomSex,
+                DormitoryId =f.DormitoryId,
+                TypeId = f.TypeId
                 
             })
         };

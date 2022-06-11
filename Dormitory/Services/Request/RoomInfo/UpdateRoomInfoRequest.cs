@@ -1,4 +1,5 @@
-namespace Dormitory.Services;
+using System.ComponentModel.DataAnnotations;
+namespace Dormitory.Services.Request.RoomInfo;
 
 public class UpdateRoomInfoRequest
 {
@@ -9,7 +10,10 @@ public class UpdateRoomInfoRequest
     public string Faculty { set; get; }
     public int CourseNum { set; get; }
     public string RoomSex { set; get; } //?
+    [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
     public  DateTime DateOfSettlement { set; get; } 
+    [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
     public  DateTime DateOfDeparture { set; get; } 
+    [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
     public  DateTime EarlyDepartureDate { set; get; } 
 }

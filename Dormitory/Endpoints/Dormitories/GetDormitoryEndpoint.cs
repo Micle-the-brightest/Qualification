@@ -1,13 +1,17 @@
 using Dormitory.Entityes;
 using Dormitory.Mapper;
 using Dormitory.Services;
+using Dormitory.Services.Request.Dormitory;
+using Dormitory.Services.Response.Dormitory;
 using FastEndpoints;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 
 namespace Dormitory.Endpoints.Dormitories;
 
-[HttpGet("/dormitory")][AllowAnonymous]
+[HttpGet("/dormitory")]
+[AllowAnonymous]
+
 public class GetDormitoryEndpoint: Endpoint<GetDormitoryRequest, GetDormitoryResponse>
 {
     private readonly DormitoryContext _dormitoryContext;
@@ -25,6 +29,7 @@ public class GetDormitoryEndpoint: Endpoint<GetDormitoryRequest, GetDormitoryRes
         {
             Dormitories = entities.Select(f => new DormitoryViewModel
             {
+                Id=f.Id,
                 BuldingName = f.BuldingName,
                 Address= f.Address,
                 PostIndex= f.PostIndex,

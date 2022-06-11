@@ -1,4 +1,4 @@
-namespace Dormitory.Services;
+namespace Dormitory.Services.Request.RoomInfo;
 
 public class DeleteRoomInfoRequest
 {

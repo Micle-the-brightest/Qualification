@@ -1,6 +1,8 @@
 using Dormitory.Entityes;
 using Dormitory.Mapper;
 using Dormitory.Services;
+using Dormitory.Services.Request.RoomInfo;
+using Dormitory.Services.Response.RoomInfo;
 using FastEndpoints;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
@@ -22,17 +24,18 @@ public class GetRoomInfoEndpoint: Endpoint<GetRoomInfoRequest, GetRoomInfoRespon
         var response = new GetRoomInfoResponse()
         {
             RoomsInfo = entities.Select(f => new RoomInfoViewModel()
-            {
+            {   
+                Id = f.Id,
                 StudName = f.StudName,
                 NumRoom= f.NumRoom,
-                TypeRoom= f.TypeRoom,
                 Faculty= f.Faculty,
                 CourseNum =f.CourseNum,
                 RoomSex = f.RoomSex,
                 DateOfSettlement= f.DateOfSettlement,
                 DateOfDeparture =f.DateOfDeparture,
-                EarlyDepartureDate = f.EarlyDepartureDate
-               
+                EarlyDepartureDate = f.EarlyDepartureDate,
+                RoomId = f.RoomId
+
             })
         };
         await SendAsync(response, cancellation: ct);

@@ -1,6 +1,8 @@
 using Dormitory.Entityes;
 using Dormitory.Mapper;
 using Dormitory.Services;
+using Dormitory.Services.Request.Type;
+using Dormitory.Services.Response.Type;
 using FastEndpoints;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
@@ -8,7 +10,7 @@ using Microsoft.EntityFrameworkCore;
 namespace Dormitory.Endpoints.Type;
 
 
-[HttpGet("/type/{{id}}")][AllowAnonymous]
+[HttpGet("/type/{id}")][AllowAnonymous]
 public class GetTypeByIdEndpoint: Endpoint<GetByIdTypeRequest, GetByIdTypeResponse>
 {
     private readonly DormitoryContext _typeContext;

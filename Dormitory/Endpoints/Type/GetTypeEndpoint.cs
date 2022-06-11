@@ -1,6 +1,8 @@
 using Dormitory.Entityes;
 using Dormitory.Mapper;
 using Dormitory.Services;
+using Dormitory.Services.Request.Type;
+using Dormitory.Services.Response.Type;
 using FastEndpoints;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
@@ -22,7 +24,7 @@ public class GetTypeEndpoint: Endpoint<GetTypeRequest, GetTypeResponse>
         var response = new GetTypeResponse()
         {
             Type = entities.Select(f => new TypeViewModel()
-            {
+            {   Id =f.Id,
                 TypeRoom = f.TypeRoom,
                 Price= f.Price
                 

@@ -1,12 +1,14 @@
 using Dormitory.Entityes;
 using Dormitory.Services;
+using Dormitory.Services.Request.Type;
+using Dormitory.Services.Response.Type;
 using FastEndpoints;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 
 namespace Dormitory.Endpoints.Type;
 
-[HttpPut("/type/{{id}}")][AllowAnonymous]
+[HttpPut("/type/{id}")][AllowAnonymous]
 public class UpdateTypeEndpoint:Endpoint<UpdateTypeRequest, UpdateTypeResponse>
 {
     private readonly DormitoryContext _typeContext;

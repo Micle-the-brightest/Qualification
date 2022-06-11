@@ -1,13 +1,15 @@
 using Dormitory.Entityes;
 using Dormitory.Mapper;
 using Dormitory.Services;
+using Dormitory.Services.Request.RoomInfo;
+using Dormitory.Services.Response.RoomInfo;
 using FastEndpoints;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 
 namespace Dormitory.Endpoints.RoomInfo;
 
-[HttpGet("/roomInfo/{{id}}")][AllowAnonymous]
+[HttpGet("/roomInfo/{id}")][AllowAnonymous]
 public class GetRoomInfoByIdEndpoint: Endpoint<GetByIdRoomInfoRequest, GetByIdRoomInfoResponse>
 {
     private readonly DormitoryContext _roomInfoContext;
@@ -34,13 +36,13 @@ public class GetRoomInfoByIdEndpoint: Endpoint<GetByIdRoomInfoRequest, GetByIdRo
             {  
                 StudName= entity.StudName,
                 NumRoom = entity.NumRoom,
-                TypeRoom= entity.TypeRoom,
                 Faculty= entity.Faculty,
                 CourseNum = entity.CourseNum,
                 RoomSex = entity.RoomSex,
                 DateOfSettlement= entity.DateOfSettlement,
                 DateOfDeparture = entity.DateOfDeparture,
                 EarlyDepartureDate = entity.EarlyDepartureDate,
+                
             }
         };
         await SendAsync(response, cancellation: ct);
